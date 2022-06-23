@@ -1,6 +1,8 @@
+import '../styles.css';
+
 export default function SearchBar() {
   return (
-    <div>
+    <div className='searchbar'>
       <input placeholder='Artists, albums and more...' />
       <button>SEARCH</button>
     </div>

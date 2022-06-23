@@ -10,10 +10,10 @@ export default function NavBar() {
       </a>
       <ul>
         <li>
-          <a href='./Marketplace.js'>Marketplace</a>
+          <a href='/marketplace'>Marketplace</a>
         </li>
         <li>
-          <a href='./User.js'>User</a>
+          <a href='/user'>User</a>
         </li>
       </ul>
     </nav>
