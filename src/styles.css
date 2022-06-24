@@ -21,8 +21,31 @@ body {
   padding: 0 1rem;
 }
 
+@media screen and (min-width: 1200px) {
+  .searchbar {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+
 .searchbar {
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.bar {
+  padding: 15px 15px 15px 15px;
+  font-size: 24px;
+  width: 100%;
+}
+
+.button {
+  padding: 17px 4px 17px 4px;
+  font-size: 20px;
 }
 
 .site-title {

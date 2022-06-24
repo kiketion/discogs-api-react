@@ -1,19 +1,18 @@
-import SearchBar from './SearchBar';
 import '../styles.css';
+import { Link } from 'react-router-dom';
 
 export default function NavBar() {
   return (
     <nav className='nav'>
-      <SearchBar />
-      <a href='/' className='site-title'>
+      <Link to='/' className='site-title'>
         Reactify
-      </a>
+      </Link>
       <ul>
         <li>
-          <a href='/marketplace'>Marketplace</a>
+          <Link to='/marketplace'>Marketplace</Link>
         </li>
         <li>
-          <a href='/user'>User</a>
+          <Link to='/user'>User</Link>
         </li>
       </ul>
     </nav>
