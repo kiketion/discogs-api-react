@@ -1,11 +1,25 @@
 import React from 'react';
-import SearchBar from './SearchBar';
+import SearchBar from './home-components/SearchBar';
+import DiscBox from './home-components/DiscBox';
 
-export default function Home({ callQuery }) {
+export default function Home({
+  searchResult,
+  searching,
+  setSearching,
+  search,
+}) {
   return (
     <div>
-      <SearchBar callQuery={callQuery} />
-      <h1>This is the Home Page</h1>
+      <SearchBar
+        searching={searching}
+        setSearching={setSearching}
+        search={search}
+      />
+      <div className='grid'>
+        {searchResult?.map((discReq) => (
+          <DiscBox key={discReq.id} {...discReq} />
+        ))}
+      </div>
     </div>
   );
 }
