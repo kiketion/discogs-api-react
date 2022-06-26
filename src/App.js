@@ -22,14 +22,20 @@ function App() {
   }, []);
 
   const fetchMusic = (id, searchType = 'title') => {
-    fetch(
-      `${API_URL_SEARCH_URL}${id}&${searchType}&key=${KEY}&secret=${SECRET}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(Data.results);
-        setSearchResult(data.results);
-      });
+    const cachedResult = localStorage.getItem(id);
+    if (cachedResult !== null && cachedResult !== undefined) {
+      setSearchResult(cachedResult);
+    } else {
+      fetch(
+        `${API_URL_SEARCH_URL}${id}&${searchType}&key=${KEY}&secret=${SECRET}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(Data.results);
+          localStorage.setItem(id, data.results);
+          setSearchResult(data.results);
+        });
+    }
   };
 
   const search = async () => {
