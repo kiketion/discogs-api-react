@@ -22,8 +22,9 @@ function App() {
   }, []);
 
   const fetchMusic = (id, searchType = 'title') => {
-    const cachedResult = localStorage.getItem(id);
+    let cachedResult = sessionStorage.getItem(id.toLowerCase());
     if (cachedResult !== null && cachedResult !== undefined) {
+      cachedResult = JSON.parse(cachedResult);
       setSearchResult(cachedResult);
     } else {
       fetch(
@@ -32,23 +33,34 @@ function App() {
         .then((res) => res.json())
         .then((data) => {
           // console.log(Data.results);
-          localStorage.setItem(id, data.results);
+          sessionStorage.setItem(
+            id.toLowerCase(),
+            JSON.stringify(data.results)
+          );
           setSearchResult(data.results);
         });
     }
   };
 
   const search = async () => {
-    const previousSearches = localStorage.getItem('search');
-    if (previousSearches !== null && previousSearches !== undefined) {
-      localStorage.setItem('search', [
+    const previousSearches = sessionStorage.getItem('search');
+    const searchTerm = searching.toLowerCase();
+
+    const haveCache =
+      previousSearches !== null && previousSearches !== undefined;
+
+    if (haveCache && !previousSearches.split(',').includes(searchTerm)) {
+      sessionStorage.setItem('search', [
         ...previousSearches.split(','),
-        searching,
+        searchTerm,
       ]);
-    } else {
-      localStorage.setItem('search', [searching]);
     }
-    await fetchMusic(searching);
+
+    if (!haveCache) {
+      sessionStorage.setItem('search', [searchTerm]);
+    }
+
+    await fetchMusic(searchTerm);
   };
 
   return (

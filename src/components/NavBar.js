@@ -1,6 +1,6 @@
 import '../styles.css';
 import { Link } from 'react-router-dom';
-import logo from '../assets/discogs-logo.jpeg';
+import logo from '../assets/discogs-logo.jpg';
 
 export default function NavBar() {
   return (
