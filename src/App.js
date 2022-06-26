@@ -12,17 +12,20 @@ function App() {
 
   const [searchResult, setSearchResult] = useState([]);
   const [searching, setSearching] = useState('');
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
     fetch(`${API_URL_SEARCH_URL}Nirvana&key=${KEY}&secret=${SECRET}`)
       .then((res) => res.json())
       .then((data) => {
+        sessionStorage.setItem('searchHistory', 'nirvarna');
         setSearchResult(data.results);
       });
   }, []);
 
   const fetchMusic = (id, searchType = 'title') => {
     let cachedResult = sessionStorage.getItem(id.toLowerCase());
+    // if we have it in cache then we dont fetch it
     if (cachedResult !== null && cachedResult !== undefined) {
       cachedResult = JSON.parse(cachedResult);
       setSearchResult(cachedResult);
@@ -32,7 +35,7 @@ function App() {
       )
         .then((res) => res.json())
         .then((data) => {
-          // console.log(Data.results);
+          // store search information into session storage
           sessionStorage.setItem(
             id.toLowerCase(),
             JSON.stringify(data.results)
@@ -43,23 +46,26 @@ function App() {
   };
 
   const search = async () => {
-    const previousSearches = sessionStorage.getItem('search');
+    let previousSearches = sessionStorage.getItem('searchHistory');
     const searchTerm = searching.toLowerCase();
-
+    // checks if we have any previous searches from before
     const haveCache =
       previousSearches !== null && previousSearches !== undefined;
 
     if (haveCache && !previousSearches.split(',').includes(searchTerm)) {
-      sessionStorage.setItem('search', [
+      sessionStorage.setItem('searchHistory', [
         ...previousSearches.split(','),
         searchTerm,
       ]);
     }
 
     if (!haveCache) {
-      sessionStorage.setItem('search', [searchTerm]);
+      sessionStorage.setItem('searchHistory', [searchTerm]);
     }
 
+    // update search history from cache
+    previousSearches = sessionStorage.getItem('searchHistory').split(',');
+    setHistory([searchTerm]);
     await fetchMusic(searchTerm);
   };
 
@@ -76,6 +82,8 @@ function App() {
                 searching={searching}
                 setSearching={setSearching}
                 search={search}
+                history={history}
+                setHistory={setHistory}
               />
             }
           ></Route>
