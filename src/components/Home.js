@@ -29,9 +29,19 @@ export default function Home({
         />
       </div>
       <div className='grid'>
-        {searchResult?.map((discReq) => (
-          <DiscBox key={discReq.id} {...discReq} />
-        ))}
+        {searchResult?.map((discReq) =>
+          discReq.cover_image !== null &&
+          discReq.cover_image !== undefined &&
+          discReq.cover_image.indexOf('.gif') === -1 ? (
+            <DiscBox
+              key={discReq.id}
+              title={discReq.title}
+              cover_image={discReq.cover_image}
+            />
+          ) : (
+            <></>
+          )
+        )}
       </div>
     </div>
   );
