@@ -1,4 +1,5 @@
 import React from 'react';
+import searchicon from '../../assets/search-icon.jpg';
 
 export default function SearchBar({
   searching,
@@ -43,7 +44,7 @@ export default function SearchBar({
         }
       ></input>
       <button className='button' type='submit'>
-        Search
+        <img src={searchicon} alt='search-icon' className='search-icon' />
       </button>
     </form>
   );
