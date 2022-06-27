@@ -21,18 +21,19 @@ body {
 
 .card {
   width: 350px;
-  margin-right: 4px;
-  margin-left: 4px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0);
   transition: 0.3s;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 16px 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.img {
+.cover-image {
+  display: block;
   width: 100%;
+  min-height: 350px;
 }
 .nav {
   background-color: #333;
@@ -46,24 +47,34 @@ body {
 
 @media screen and (min-width: 1200px) {
   .searchbar {
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .dropdown-content {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-.searchbar {
-  margin-top: 1rem;
+.searchContainer {
+  justify-content: left;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  flex-direction: column;
+  width: 80%;
+}
+
+.searchbar {
+  margin: 0;
+  width: 100%;
+  display: flex;
 }
 
 .bar {
   padding: 15px 15px 15px 15px;
   font-size: 24px;
-  width: 100%;
+  width: 80%;
 }
 
 .button {
@@ -91,4 +102,12 @@ nav ul {
   display: flex;
   align-items: center;
   padding: 0.25rem;
+}
+
+.dropdown-content {
+  justify-content: center;
+  margin: 0;
+  font-size: 24px;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }

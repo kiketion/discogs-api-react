@@ -9,11 +9,11 @@ export default function AutoComplete({
   useEffect(() => {
     let filteredHistory = [];
     if (searching.length > 0) {
-      if (history.length === 0) {
+      if (history?.length === 0) {
         history = sessionStorage.getItem('searchHistory').split(',');
       }
 
-      filteredHistory = history.filter(
+      filteredHistory = history?.filter(
         (searchTerm) => searchTerm.indexOf(searching.toLowerCase()) !== -1
       );
     }
@@ -29,10 +29,14 @@ export default function AutoComplete({
   };
 
   return (
-    <div>
+    <div className='dropdown-content'>
       {history &&
         history.map((searchTerm) => (
-          <div onClick={() => handleClick(searchTerm)} value={searchTerm}>
+          <div
+            className='auto-complete-term'
+            onClick={() => handleClick(searchTerm)}
+            value={searchTerm}
+          >
             {searchTerm}
           </div>
         ))}

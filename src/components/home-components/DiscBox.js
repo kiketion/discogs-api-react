@@ -12,7 +12,7 @@ export default function DiscBox({
   return (
     <div className='card'>
       <div>
-        <img src={cover_image} className='img' alt='cover_image' />
+        <img src={cover_image} className='cover-image' alt='cover_image' />
         <h2>{title}</h2>
         <h5>{genre}</h5>
         <h5>{year}</h5>

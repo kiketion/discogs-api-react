@@ -13,18 +13,21 @@ export default function Home({
 }) {
   return (
     <div>
-      <SearchBar
-        searching={searching}
-        setSearching={setSearching}
-        search={search}
-        setHistory={setHistory}
-      />
-      <AutoComplete
-        history={history}
-        setSearching={setSearching}
-        searching={searching}
-        setHistory={setHistory}
-      />
+      <div className='searchContainer'>
+        <SearchBar
+          searching={searching}
+          setSearching={setSearching}
+          search={search}
+          setHistory={setHistory}
+          history={history}
+        />
+        <AutoComplete
+          history={history}
+          setSearching={setSearching}
+          searching={searching}
+          setHistory={setHistory}
+        />
+      </div>
       <div className='grid'>
         {searchResult?.map((discReq) => (
           <DiscBox key={discReq.id} {...discReq} />

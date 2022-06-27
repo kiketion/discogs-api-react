@@ -18,7 +18,7 @@ function App() {
     fetch(`${API_URL_SEARCH_URL}Nirvana&key=${KEY}&secret=${SECRET}`)
       .then((res) => res.json())
       .then((data) => {
-        sessionStorage.setItem('searchHistory', 'nirvarna');
+        sessionStorage.setItem('nirvana', JSON.stringify(data.results));
         setSearchResult(data.results);
       });
   }, []);
