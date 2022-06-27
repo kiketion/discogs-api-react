@@ -2,10 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import ModalCard from './ModalCard';
 
-export default function DiscBox({ title, cover_image }) {
+export default function DiscBox({ title, cover_image, format, year }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
+    <>
       <div className='card' onClick={() => setIsOpen(true)}>
         <div>
           <img src={cover_image} className='cover-image' alt='cover_image' />
@@ -16,10 +16,11 @@ export default function DiscBox({ title, cover_image }) {
         <ModalCard
           title={title}
           cover_image={cover_image}
+          format={format}
+          year={year}
           setIsOpen={setIsOpen}
         />
       )}
-      ;
-    </div>
+    </>
   );
 }

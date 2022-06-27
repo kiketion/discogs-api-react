@@ -48,7 +48,9 @@ function App() {
 
   const search = async () => {
     let previousSearches = sessionStorage.getItem('searchHistory');
-    const searchTerm = searching.toLowerCase();
+    const searchTerm = searching.toLowerCase().trim();
+    if (searchTerm.length === 0) return;
+
     // checks if we have any previous searches from before
     const haveCache =
       previousSearches !== null && previousSearches !== undefined;

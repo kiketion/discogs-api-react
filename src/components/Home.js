@@ -37,6 +37,8 @@ export default function Home({
               key={discReq.id}
               title={discReq.title}
               cover_image={discReq.cover_image}
+              format={discReq.format}
+              year={discReq.year}
             />
           ) : (
             <></>
