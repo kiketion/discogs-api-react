@@ -21,6 +21,7 @@ function App() {
         sessionStorage.setItem('nirvana', JSON.stringify(data.results));
         setSearchResult(data.results);
       });
+    setHistory([]);
   }, []);
 
   const fetchMusic = (id, searchType = 'title') => {
