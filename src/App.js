@@ -13,6 +13,7 @@ function App() {
   const [searchResult, setSearchResult] = useState([]);
   const [searching, setSearching] = useState('');
   const [history, setHistory] = useState([]);
+  const [token, setToken] = useState('');
 
   useEffect(() => {
     const randomOptions = [
@@ -31,7 +32,7 @@ function App() {
       });
     setSearching(randomOption);
     setHistory([]);
-  }, []);
+  }, [token]);
 
   const fetchMusic = (id, searchType = 'title') => {
     let cachedResult = sessionStorage.getItem(id.toLowerCase());
@@ -83,25 +84,15 @@ function App() {
 
   return (
     <div className='App'>
-      <NavBar />
+      <NavBar
+        searching={searching}
+        setSearching={setSearching}
+        search={search}
+        history={history}
+        setHistory={setHistory}
+      />
       <div className='container'>
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <Home
-                searchResult={searchResult}
-                searching={searching}
-                setSearching={setSearching}
-                search={search}
-                history={history}
-                setHistory={setHistory}
-              />
-            }
-          ></Route>
-          <Route path='/marketplace' element={<Marketplace />}></Route>
-          <Route path='/user' element={<User />}></Route>
-        </Routes>
+        <Home searchResult={searchResult} />
       </div>
     </div>
   );

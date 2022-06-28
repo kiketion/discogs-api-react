@@ -1,21 +1,36 @@
 import '../styles.css';
 import { Link } from 'react-router-dom';
 import logo from '../assets/discogs-logo.jpg';
+import AutoComplete from './nav-components/AutoComplete';
+import SearchBar from './nav-components/SearchBar';
 
-export default function NavBar() {
+export default function NavBar({
+  searching,
+  setSearching,
+  search,
+  setHistory,
+  history,
+}) {
   return (
     <nav className='nav'>
       <Link to='/' className='site-title'>
         <img src={logo} alt='logo' />
       </Link>
-      <ul>
-        <li>
-          <Link to='/marketplace'>Marketplace</Link>
-        </li>
-        <li>
-          <Link to='/user'>User</Link>
-        </li>
-      </ul>
+      <div className='searchContainer'>
+        <SearchBar
+          searching={searching}
+          setSearching={setSearching}
+          search={search}
+          setHistory={setHistory}
+          history={history}
+        />
+        <AutoComplete
+          history={history}
+          setSearching={setSearching}
+          searching={searching}
+          setHistory={setHistory}
+        />
+      </div>
     </nav>
   );
 }

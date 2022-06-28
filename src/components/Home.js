@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchBar from './home-components/SearchBar';
+import SearchBar from './nav-components/SearchBar';
 import DiscBox from './home-components/DiscBox';
-import AutoComplete from './home-components/AutoComplete';
+import AutoComplete from './nav-components/AutoComplete';
 
 export default function Home({
   searchResult,
@@ -13,21 +13,6 @@ export default function Home({
 }) {
   return (
     <div>
-      <div className='searchContainer'>
-        <SearchBar
-          searching={searching}
-          setSearching={setSearching}
-          search={search}
-          setHistory={setHistory}
-          history={history}
-        />
-        <AutoComplete
-          history={history}
-          setSearching={setSearching}
-          searching={searching}
-          setHistory={setHistory}
-        />
-      </div>
       <div className='grid'>
         {searchResult?.map((discReq) =>
           discReq.cover_image !== null &&

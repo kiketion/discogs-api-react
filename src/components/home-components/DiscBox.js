@@ -4,9 +4,12 @@ import ModalCard from './ModalCard';
 
 export default function DiscBox({ title, cover_image, format, year }) {
   const [isOpen, setIsOpen] = useState(false);
+  const handleOpeningModule = () => {
+    setIsOpen(true);
+  };
   return (
     <>
-      <div className='card' onClick={() => setIsOpen(true)}>
+      <div className='card' onClick={() => handleOpeningModule()}>
         <div>
           <img src={cover_image} className='cover-image' alt='cover_image' />
           <h2>{title}</h2>

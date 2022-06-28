@@ -17,7 +17,7 @@ export default function ModalCard({
             <img src={cover_image} className='modal-image' alt='modal-img' />
             <div className='modal-text-content'>
               <h2>{title}</h2>
-              <h4>{format.join(', ')}</h4>
+              <h4>{format?.join(', ')}</h4>
               <h4>{year}</h4>
             </div>
           </div>
