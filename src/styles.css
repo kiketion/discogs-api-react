@@ -28,6 +28,7 @@ p {
   margin: 4px;
   box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+  border-radius: 10px;
 }
 
 .card:hover {
@@ -39,6 +40,8 @@ p {
   width: 100%;
   min-height: 350px;
   max-height: 350px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .nav {
@@ -88,12 +91,9 @@ p {
   }
 
   .modal-text-content {
-    height: 250px !important;
-    width: 250px !important;
+    height: 230px !important;
+    width: 230px !important;
   }
-}
-
-@media only screen and (min-width: 1280) {
 }
 
 .searchContainer {
@@ -116,12 +116,14 @@ p {
   padding: 15px 15px 15px 15px;
   font-size: 24px;
   width: 80%;
+  border-radius: 10px;
 }
 
 .button {
   background-color: white;
   padding: 2px 4px 2px 4px;
   font-size: 20px;
+  border-radius: 10px;
 }
 
 .search-icon {
@@ -135,25 +137,23 @@ p {
   width: 65%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   position: absolute;
+  border-radius: 10px;
 }
 
 .auto-complete-term {
   text-indent: 15px;
   width: 100%;
-  border-top: solid #f6f6f6;
-  border-width: 1px;
   font-size: 24px;
   padding: 8px 0px 8px 0px;
 }
 
 .dropdown-item:hover {
+  border-radius: 10px;
   background-color: #afafaf;
   cursor: pointer;
 }
 
 .delete-button {
-  border-top: solid #f6f6f6;
-  border-width: 1px;
   padding-top: 10px;
   padding-right: 8px;
   cursor: pointer;
@@ -174,7 +174,7 @@ p {
 
   height: 450px;
   width: 450px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .centered {
@@ -182,6 +182,7 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 10px;
 }
 
 .modal {
@@ -193,7 +194,7 @@ p {
   color: black;
   z-index: 10;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .modal-background {
@@ -210,8 +211,8 @@ p {
 .modal-text-content {
   background-color: #f6f6f6;
   width: 350px;
-  height: 450px;
+  height: 430px;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
 }
