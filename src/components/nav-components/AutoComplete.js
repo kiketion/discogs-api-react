@@ -10,7 +10,7 @@ export default function AutoComplete({
     let filteredHistory = [];
     if (searching.length > 0) {
       if (history?.length === 0) {
-        history = sessionStorage.getItem('searchHistory').split(',');
+        history = sessionStorage.getItem('searchHistory')?.split(',');
       }
 
       filteredHistory = history?.filter(

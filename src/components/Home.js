@@ -12,7 +12,7 @@ export default function Home({
   setHistory,
 }) {
   return (
-    <div>
+    <div className='container'>
       <div className='grid'>
         {searchResult?.map((discReq) =>
           discReq.cover_image !== null &&
