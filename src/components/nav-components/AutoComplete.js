@@ -44,21 +44,21 @@ export default function AutoComplete({
     <div className='dropdown-content'>
       {history &&
         history.map((searchTerm) => (
-          <>
+          <div className='dropdown-item'>
             <div
               className='auto-complete-term'
               onClick={() => handleClick(searchTerm)}
               value={searchTerm}
             >
-              {searchTerm}
+              <p>{searchTerm}</p>
             </div>
-            <p
+            <div
               className='delete-button'
               onClick={() => handleDelete(searchTerm)}
             >
-              delete
-            </p>
-          </>
+              <p id='delete-text'>delete</p>
+            </div>
+          </div>
         ))}
     </div>
   );

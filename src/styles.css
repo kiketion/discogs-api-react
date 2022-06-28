@@ -3,6 +3,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+p {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .container {
   margin: 1rem;
   text-align: center;
@@ -132,15 +139,34 @@ body {
 
 .auto-complete-term {
   text-indent: 15px;
+  width: 100%;
   border-top: solid #f6f6f6;
   border-width: 1px;
   font-size: 24px;
   padding: 8px 0px 8px 0px;
 }
 
-.auto-complete-term:hover {
+.dropdown-item:hover {
   background-color: #afafaf;
   cursor: pointer;
+}
+
+.delete-button {
+  border-top: solid #f6f6f6;
+  border-width: 1px;
+  padding-top: 10px;
+  padding-right: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.delete-button:hover {
+  color: #009dff;
+}
+
+.dropdown-item {
+  display: flex;
+  z-index: 0;
 }
 
 .modal-image {
