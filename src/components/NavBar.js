@@ -28,6 +28,7 @@ export default function NavBar({
           setSearching={setSearching}
           searching={searching}
           setHistory={setHistory}
+          search={search}
         />
       </div>
     </nav>

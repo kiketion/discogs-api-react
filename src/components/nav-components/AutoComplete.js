@@ -5,6 +5,7 @@ export default function AutoComplete({
   setHistory,
   searching,
   setSearching,
+  search,
 }) {
   // we refresh the auto-complete as we type on the search bar
   useEffect(() => {
@@ -24,7 +25,6 @@ export default function AutoComplete({
     if (searching.length === 0) {
       filteredHistory = sessionStorage.getItem('searchHistory')?.split(',');
     }
-
     // if we have the word fully written then we dont need the autocomplete
     filteredHistory?.includes(searching.toLowerCase())
       ? setHistory([])

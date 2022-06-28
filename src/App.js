@@ -52,7 +52,7 @@ function App() {
     if (haveCache && !previousSearches.split(',').includes(searchTerm)) {
       sessionStorage.setItem('searchHistory', [
         searchTerm,
-        ...previousSearches.split(','),
+        ...previousSearches.split(',').slice(0, 4),
       ]);
     }
 
@@ -62,16 +62,19 @@ function App() {
 
     if (haveCache && previousSearches.split(',').includes(searchTerm)) {
       const searchTermIndex = previousSearches.split(',').indexOf(searchTerm);
-      const newSearches = [
+      const newSearchHistory = [
         ...previousSearches.split(',').slice(0, searchTermIndex),
         ...previousSearches.split(',').slice(searchTermIndex + 1),
       ];
 
-      sessionStorage.setItem('searchHistory', [searchTerm, ...newSearches]);
+      sessionStorage.setItem('searchHistory', [
+        searchTerm,
+        ...newSearchHistory.slice(0, 4),
+      ]);
     }
     // update search history from cache
     previousSearches = sessionStorage.getItem('searchHistory').split(',');
-    setHistory([searchTerm]);
+    setHistory([]);
     await fetchMusic(searchTerm);
   };
 

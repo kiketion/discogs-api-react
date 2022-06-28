@@ -21,9 +21,12 @@ export default function SearchBar({
   const handleClick = () => {
     const history = sessionStorage.getItem('searchHistory')?.split(',');
     if (searching.length > 0) {
-      const filteredHistory = history.filter(
+      let filteredHistory = history.filter(
         (searchTerm) => searchTerm.indexOf(searching.toLowerCase()) !== -1
       );
+      filteredHistory = filteredHistory?.includes(searching.toLowerCase())
+        ? []
+        : filteredHistory;
       return filteredHistory;
     }
 
