@@ -1,5 +1,4 @@
 import NavBar from './components/NavBar.js';
-
 import Home from './components/Home.js';
 import { useEffect, useState } from 'react';
 
@@ -70,15 +69,14 @@ function App() {
   const toggleLogIn = async () => {
     const randomOptions = [
       'Nirvana',
-      'Hello',
-      'World',
+      'Guns and Roses',
+      'Metallica',
       'Linkin Park',
-      'The End',
+      'Pink Floyd',
     ];
     const randomOption = randomOptions[Math.floor(Math.random() * 5)];
     await fetchMusic(randomOption);
     setHistory([]);
-    console.log(randomOption);
     setSearching(randomOption);
   };
 

@@ -1,5 +1,4 @@
 import '../styles.css';
-import { Link } from 'react-router-dom';
 import logo from '../assets/discogs-logo.jpg';
 import AutoComplete from './nav-components/AutoComplete';
 import SearchBar from './nav-components/SearchBar';
@@ -13,9 +12,9 @@ export default function NavBar({
 }) {
   return (
     <nav className='nav'>
-      <Link to='/' className='site-title'>
+      <a href='/' className='site-title'>
         <img src={logo} alt='logo' />
-      </Link>
+      </a>
       <div className='searchContainer'>
         <SearchBar
           searching={searching}
