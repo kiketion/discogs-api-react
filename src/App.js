@@ -15,12 +15,21 @@ function App() {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_URL_SEARCH_URL}Nirvana&key=${KEY}&secret=${SECRET}`)
+    const randomOptions = [
+      'Nirvana',
+      'Hello',
+      'World',
+      'Linkin Park',
+      'The End',
+    ];
+    const randomOption = randomOptions[Math.floor(Math.random() * 5)];
+    fetch(`${API_URL_SEARCH_URL}${randomOption}&key=${KEY}&secret=${SECRET}`)
       .then((res) => res.json())
       .then((data) => {
         sessionStorage.setItem('nirvana', JSON.stringify(data.results));
         setSearchResult(data.results);
       });
+    setSearching(randomOption);
     setHistory([]);
   }, []);
 
