@@ -42,7 +42,7 @@ function App() {
 
   const search = async () => {
     let previousSearches = sessionStorage.getItem('searchHistory');
-    const searchTerm = searching.toLowerCase().trim();
+    const searchTerm = searching.trim();
     if (searchTerm.length === 0) return;
 
     // checks if we have any previous searches from before
@@ -51,8 +51,8 @@ function App() {
 
     if (haveCache && !previousSearches.split(',').includes(searchTerm)) {
       sessionStorage.setItem('searchHistory', [
-        ...previousSearches.split(','),
         searchTerm,
+        ...previousSearches.split(','),
       ]);
     }
 
@@ -60,12 +60,23 @@ function App() {
       sessionStorage.setItem('searchHistory', [searchTerm]);
     }
 
+    if (haveCache && previousSearches.split(',').includes(searchTerm)) {
+      const searchTermIndex = previousSearches.split(',').indexOf(searchTerm);
+      const newSearches = [
+        ...previousSearches.split(',').slice(0, searchTermIndex),
+        ...previousSearches.split(',').slice(searchTermIndex + 1),
+      ];
+
+      sessionStorage.setItem('searchHistory', [searchTerm, ...newSearches]);
+    }
     // update search history from cache
     previousSearches = sessionStorage.getItem('searchHistory').split(',');
     setHistory([searchTerm]);
     await fetchMusic(searchTerm);
   };
 
+  // will pick a word at random and search it
+  // so we have something displayed at log in/ opening the page
   const toggleLogIn = async () => {
     const randomOptions = [
       'Nirvana',

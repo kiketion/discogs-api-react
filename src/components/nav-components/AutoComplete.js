@@ -6,15 +6,18 @@ export default function AutoComplete({
   searching,
   setSearching,
 }) {
+  // we refresh the auto-complete as we type on the search bar
   useEffect(() => {
     let filteredHistory = [];
     if (searching.length > 0) {
+      // if we have nothing in history then we start it from our cache
       if (history?.length === 0) {
         history = sessionStorage.getItem('searchHistory')?.split(',');
       }
 
       filteredHistory = history?.filter(
-        (searchTerm) => searchTerm.indexOf(searching.toLowerCase()) !== -1
+        (searchTerm) =>
+          searchTerm.toLowerCase().indexOf(searching.toLowerCase()) !== -1
       );
     }
 
@@ -23,10 +26,10 @@ export default function AutoComplete({
     }
 
     // if we have the word fully written then we dont need the autocomplete
-    filteredHistory.includes(searching.toLowerCase())
+    filteredHistory?.includes(searching.toLowerCase())
       ? setHistory([])
       : setHistory(filteredHistory);
-  }, [searching]);
+  }, [searching /* we refresh depending on the search term (searching)*/]);
   const handleClick = (searchTerm) => {
     setSearching(searchTerm);
   };

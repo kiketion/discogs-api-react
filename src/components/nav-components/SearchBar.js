@@ -17,6 +17,7 @@ export default function SearchBar({
     await search();
   };
 
+  // makes the autocomplete appear whenever we click the input bar
   const handleClick = () => {
     const history = sessionStorage.getItem('searchHistory')?.split(',');
     if (searching.length > 0) {
