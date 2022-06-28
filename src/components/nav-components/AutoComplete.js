@@ -18,7 +18,10 @@ export default function AutoComplete({
 
       filteredHistory = history?.filter(
         (searchTerm) =>
-          searchTerm.toLowerCase().indexOf(searching.toLowerCase()) !== -1
+          searchTerm
+            .substring(0, searching.length)
+            .toLowerCase()
+            .indexOf(searching.toLowerCase()) !== -1
       );
     }
 
