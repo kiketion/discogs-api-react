@@ -1,7 +1,7 @@
 import NavBar from './components/NavBar.js';
-import User from './components/User.js';
+
 import Home from './components/Home.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const KEY = 'EYYsdVeysyPxPbldMRZm';
@@ -11,7 +11,13 @@ function App() {
   const [searchResult, setSearchResult] = useState([]);
   const [searching, setSearching] = useState('');
   const [history, setHistory] = useState([]);
-  const [isLogIn, setIsLogIn] = useState(false);
+
+  useEffect(() => {
+    async function firstCall() {
+      await toggleLogIn();
+    }
+    firstCall();
+  }, []);
 
   const fetchMusic = (id, searchType = 'title') => {
     let cachedResult = sessionStorage.getItem(id.toLowerCase());
@@ -74,25 +80,18 @@ function App() {
     setHistory([]);
     console.log(randomOption);
     setSearching(randomOption);
-    setIsLogIn(!isLogIn);
   };
 
   return (
     <div className='App'>
-      {isLogIn ? (
-        <>
-          <NavBar
-            searching={searching}
-            setSearching={setSearching}
-            search={search}
-            history={history}
-            setHistory={setHistory}
-          />
-          <Home searchResult={searchResult} />
-        </>
-      ) : (
-        <User toggleLogIn={toggleLogIn} />
-      )}
+      <NavBar
+        searching={searching}
+        setSearching={setSearching}
+        search={search}
+        history={history}
+        setHistory={setHistory}
+      />
+      <Home searchResult={searchResult} />
     </div>
   );
 }
