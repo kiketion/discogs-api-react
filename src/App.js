@@ -78,6 +78,21 @@ function App() {
     await fetchMusic(searchTerm);
   };
 
+  const deleteFromSessionStorage = (deletingTerm) => {
+    const previousSearches = sessionStorage.getItem('searchHistory').split(',');
+    const filteredPreviousSearches = previousSearches.filter(
+      (searchTerm) => searchTerm !== deletingTerm
+    );
+
+    filteredPreviousSearches.length > 0
+      ? sessionStorage.setItem('searchHistory', filteredPreviousSearches)
+      : sessionStorage.removeItem('searchHistory');
+    let newHistory = history.filter(
+      (searchTerm) => searchTerm !== deletingTerm
+    );
+    setHistory(newHistory);
+  };
+
   // will pick a word at random and search it
   // so we have something displayed at log in/ opening the page
   const toggleLogIn = async () => {
@@ -102,6 +117,7 @@ function App() {
         search={search}
         history={history}
         setHistory={setHistory}
+        deleteFromSessionStorage={deleteFromSessionStorage}
       />
       <Home searchResult={searchResult} />
     </div>

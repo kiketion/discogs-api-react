@@ -9,6 +9,7 @@ export default function NavBar({
   search,
   setHistory,
   history,
+  deleteFromSessionStorage,
 }) {
   return (
     <nav className='nav'>
@@ -28,7 +29,7 @@ export default function NavBar({
           setSearching={setSearching}
           searching={searching}
           setHistory={setHistory}
-          search={search}
+          deleteFromSessionStorage={deleteFromSessionStorage}
         />
       </div>
     </nav>

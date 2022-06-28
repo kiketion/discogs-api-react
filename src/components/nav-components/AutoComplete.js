@@ -5,7 +5,7 @@ export default function AutoComplete({
   setHistory,
   searching,
   setSearching,
-  search,
+  deleteFromSessionStorage,
 }) {
   // we refresh the auto-complete as we type on the search bar
   useEffect(() => {
@@ -30,21 +30,35 @@ export default function AutoComplete({
       ? setHistory([])
       : setHistory(filteredHistory);
   }, [searching /* we refresh depending on the search term (searching)*/]);
+
   const handleClick = (searchTerm) => {
     setSearching(searchTerm);
+  };
+
+  const handleDelete = (deletingTerm) => {
+    console.log(deletingTerm);
+    deleteFromSessionStorage(deletingTerm);
   };
 
   return (
     <div className='dropdown-content'>
       {history &&
         history.map((searchTerm) => (
-          <div
-            className='auto-complete-term'
-            onClick={() => handleClick(searchTerm)}
-            value={searchTerm}
-          >
-            {searchTerm}
-          </div>
+          <>
+            <div
+              className='auto-complete-term'
+              onClick={() => handleClick(searchTerm)}
+              value={searchTerm}
+            >
+              {searchTerm}
+            </div>
+            <p
+              className='delete-button'
+              onClick={() => handleDelete(searchTerm)}
+            >
+              delete
+            </p>
+          </>
         ))}
     </div>
   );

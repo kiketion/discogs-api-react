@@ -140,6 +140,7 @@ body {
 
 .auto-complete-term:hover {
   background-color: #afafaf;
+  cursor: pointer;
 }
 
 .modal-image {
