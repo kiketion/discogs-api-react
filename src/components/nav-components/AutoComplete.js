@@ -22,7 +22,10 @@ export default function AutoComplete({
       filteredHistory = sessionStorage.getItem('searchHistory')?.split(',');
     }
 
-    setHistory(filteredHistory);
+    // if we have the word fully written then we dont need the autocomplete
+    filteredHistory.includes(searching.toLowerCase())
+      ? setHistory([])
+      : setHistory(filteredHistory);
   }, [searching]);
   const handleClick = (searchTerm) => {
     setSearching(searchTerm);
