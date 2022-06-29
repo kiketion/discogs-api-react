@@ -40,9 +40,10 @@ function App() {
     }
   };
 
-  const search = async () => {
+  const search = async (searchingTerm) => {
     let previousSearches = sessionStorage.getItem('searchHistory');
-    const searchTerm = searching.trim();
+    const searchTerm =
+      searching.trim().length === 0 ? searchingTerm.trim() : searching.trim();
     if (searchTerm.length === 0) return;
 
     // checks if we have any previous searches from before

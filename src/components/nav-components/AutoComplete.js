@@ -6,6 +6,7 @@ export default function AutoComplete({
   searching,
   setSearching,
   deleteFromSessionStorage,
+  search,
 }) {
   // we refresh the auto-complete as we type on the search bar
   useEffect(() => {
@@ -33,8 +34,9 @@ export default function AutoComplete({
       : setHistory(filteredHistory);
   }, [searching /* we refresh depending on the search term (searching)*/]);
 
-  const handleClick = (searchTerm) => {
+  const handleClick = async (searchTerm) => {
     setSearching(searchTerm);
+    await search(searchTerm);
   };
 
   const handleDelete = (deletingTerm) => {
