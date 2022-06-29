@@ -12,16 +12,14 @@ export default function AutoComplete({
     let filteredHistory = [];
     if (searching.length > 0) {
       // if we have nothing in history then we start it from our cache
-      if (history?.length === 0) {
-        history = sessionStorage.getItem('searchHistory')?.split(',');
-      }
+      filteredHistory = sessionStorage.getItem('searchHistory')?.split(',');
 
-      filteredHistory = history?.filter(
+      filteredHistory = filteredHistory?.filter(
         (searchTerm) =>
           searchTerm
             .substring(0, searching.length)
             .toLowerCase()
-            .indexOf(searching.toLowerCase()) !== -1
+            .indexOf(searching.toLowerCase().trim()) !== -1
       );
     }
 
@@ -29,7 +27,8 @@ export default function AutoComplete({
       filteredHistory = sessionStorage.getItem('searchHistory')?.split(',');
     }
     // if we have the word fully written then we dont need the autocomplete
-    filteredHistory?.includes(searching.toLowerCase())
+    filteredHistory?.includes(searching.toLowerCase()) &&
+    filteredHistory?.length === 1
       ? setHistory([])
       : setHistory(filteredHistory);
   }, [searching /* we refresh depending on the search term (searching)*/]);
