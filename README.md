@@ -8,4 +8,4 @@ A history of all searches of the user. (If you search for Linking Park and then 
 
 Deployed in Vercel. You can try it here! https://discogs-api-react.vercel.app/
 
-![discogs-api-react-img]('./src/assets/discogs-api-react-image.jpeg')
+![discogs-api-react-img](./src/assets/discogs-api-react-image.jpeg 'discogs-api-image')
