@@ -39,7 +39,6 @@ export default function AutoComplete({
   };
 
   const handleDelete = (deletingTerm) => {
-    console.log(deletingTerm);
     deleteFromSessionStorage(deletingTerm);
   };
 
