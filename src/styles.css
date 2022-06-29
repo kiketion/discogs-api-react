@@ -10,6 +10,59 @@ p {
   margin-right: auto;
 }
 
+@keyframes opening-modal-text {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+
+  25% {
+    width: 87.5px;
+    height: 107.5px;
+  }
+
+  50% {
+    width: 175px;
+    height: 215px;
+  }
+
+  75% {
+    width: 262.5px;
+    height: 322.5px;
+  }
+
+  100% {
+    width: 350px;
+    height: 430px;
+  }
+}
+
+@keyframes opening-modal-image {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  25% {
+    width: 112.5px;
+    height: 112.5px;
+  }
+
+  50% {
+    width: 225px;
+    height: 225px;
+  }
+
+  75% {
+    width: 337.5px;
+    height: 337.5px;
+  }
+
+  100% {
+    width: 450px;
+    height: 450px;
+  }
+}
+
 .container {
   margin: 1rem;
   text-align: center;
@@ -175,6 +228,9 @@ p {
   height: 450px;
   width: 450px;
   border-radius: 10px;
+
+  animation-name: opening-modal-image;
+  animation-duration: 0.2s;
 }
 
 .centered {
@@ -215,4 +271,6 @@ p {
   margin: 5px;
   border-radius: 10px;
   padding: 10px;
+  animation-name: opening-modal-text;
+  animation-duration: 0.2s;
 }
