@@ -1,16 +1,7 @@
 import React from 'react';
-import SearchBar from './nav-components/SearchBar';
 import DiscBox from './home-components/DiscBox';
-import AutoComplete from './nav-components/AutoComplete';
 
-export default function Home({
-  searchResult,
-  searching,
-  setSearching,
-  search,
-  history,
-  setHistory,
-}) {
+export default function Home({ searchResult }) {
   return (
     <div className='container'>
       <div className='grid'>
