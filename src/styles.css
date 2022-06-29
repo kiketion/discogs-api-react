@@ -14,26 +14,31 @@ p {
   0% {
     width: 0px;
     height: 0px;
+    font-size: 0px;
   }
 
   25% {
     width: 87.5px;
     height: 107.5px;
+    font-size: 4px;
   }
 
   50% {
     width: 175px;
     height: 215px;
+    font-size: 8px;
   }
 
   75% {
     width: 262.5px;
     height: 322.5px;
+    font-size: 12px;
   }
 
   100% {
     width: 350px;
     height: 430px;
+    font-size: 16px;
   }
 }
 
